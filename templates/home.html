@@ -1,0 +1,27 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static 'styles.css' %}">
+    </head>
+    <body onunload="alert('onunload')">
+        <div align="center">
+            <h2>Easy Chat</h2>
+        </div>
+        <div class="container">
+            {% if error %}
+                <h5 style="color: red; "> {{ error }}</h5>
+            {% endif %}
+            <form id="post-form" method="POST" action="">
+                {% csrf_token %}
+                <label for="room_name">Room Name</label>
+                <input type="text" name="room_name" id="room_name" width="100px" maxlength="100"/>
+                <label for="username">Username</label>
+                <input type="text" name="username" id="username" width="100px" maxlength="100"/>
+                <input type="submit" value="Enter Room">
+            </form>
+        </div>
+    </body>
+</html>
